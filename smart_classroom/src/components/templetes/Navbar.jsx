@@ -1,7 +1,11 @@
 import React from 'react'
 import logo from '../../Assests/logo.PNG'
+import { useNavigate } from 'react-router-dom'
 function Navbar() {
-
+  const Navigate = useNavigate();
+  const handleLogb = () =>{
+    Navigate('/login');
+  }
   return (
     <>
         <nav class="navbar navbar-expand-md navbar-dark position-fixed w-100 border" style={{backgroundColor:"rgb(247, 23, 68)"}}>
@@ -25,7 +29,7 @@ function Navbar() {
                 <a class="nav-link " href="#contact">Contact</a>
               </li>
             </ul>
-            <button className='btn btn-warning m-2'>Login</button>
+            <button onClick={handleLogb} className='btn btn-warning m-2'>Login</button>
           </div>
         </nav>
     </>
