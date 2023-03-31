@@ -17,13 +17,13 @@ function Connectus() {
 
             <div className="form-row">
                 <div className="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
+                <label htmlFor="inputEmail4">Email</label>
                 <input type="email" className="form-control" id="inputEmail4" placeholder="Email"/>
                 </div>
             
             </div>
             <div className="form-group">
-                <label for="inputAddress">Query</label>
+                <label htmlFor="inputAddress">Query</label>
                 <input type="text" className="form-control" id="inputAddress" placeholder="write your query here.."/>
             </div>
 

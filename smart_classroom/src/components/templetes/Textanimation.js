@@ -23,7 +23,7 @@ function Textanimation() {
         this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+        this.el.innerHTML = '<span className="wrap">'+this.txt+'</span>';
 
         var that = this;
         var delta = 200 - Math.random() * 100;
@@ -59,18 +59,16 @@ function Textanimation() {
         if(count==1){
             start();
             count++;
-            console.log("hello");
+            // console.log("hello");
         }
-        
-       
     }, [])
     
   return (
     <div>
         
 <h1>
-  <a href="" class="typewrite" data-period="3000" data-type='[ "You are Welcome.", "I am Creative.", "learn and explore", "Virtual Classroom" ,"Push your limits","Use me & Optimise Cost"]'>
-    <span class="wrap"></span>
+  <a href="" className="typewrite" data-period="3000" data-type='[ "You are Welcome.", "I am Creative.", "learn and explore", "Virtual Classroom" ,"Push your limits","Use me & Optimise Cost"]'>
+    <span className="wrap"></span>
   </a>
 </h1>
     </div>

@@ -25,40 +25,7 @@
     <script src="https://use.fontawesome.com/46f447e53d.js"></script>
     <!-- iconout for svg  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <script>
-      const body = document.querySelector("body"),
-        modeToggle = body.querySelector(".mode-toggle");
-        sidebar = body.querySelector("nav");
-        sidebarToggle = body.querySelector(".sidebar-toggle");
-  
-                  let getMode = localStorage.getItem("mode");
-                  if(getMode && getMode ==="dark"){
-                      body.classList.toggle("dark");
-                  }
-  
-                  let getStatus = localStorage.getItem("status");
-                  if(getStatus && getStatus ==="close"){
-                      sidebar.classList.toggle("close");
-                  }
-  
-                  modeToggle.addEventListener("click", () =>{
-                      body.classList.toggle("dark");
-                      if(body.classList.contains("dark")){
-                          localStorage.setItem("mode", "dark");
-                      }else{
-                          localStorage.setItem("mode", "light");
-                      }
-                  });
-  
-                  sidebarToggle.addEventListener("click", () => {
-                      sidebar.classList.toggle("close");
-                      if(sidebar.classList.contains("close")){
-                          localStorage.setItem("status", "close");
-                      }else{
-                          localStorage.setItem("status", "open");
-                      }
-                  })
-     </script>
+    
     
     <title>React App</title>
   </head>
