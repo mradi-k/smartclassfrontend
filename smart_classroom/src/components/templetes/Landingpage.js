@@ -1,6 +1,5 @@
 import React from 'react'
 import Connectus from './Connectus'
-import Footer from './Footer'
 import Navbar from './Navbar'
 import Textanimation from './Textanimation'
 
@@ -126,7 +125,7 @@ function Landingpage() {
 
         {/* <Footer/> */}
         <div className='mt-5'>
-        <Footer/>
+        {/* <Footer/> */}
         </div>
     </>
   )
