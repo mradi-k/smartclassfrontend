@@ -1,29 +1,25 @@
-import React ,{useState} from 'react'
+import React from 'react'
 import './AdminDas.css'
 import img from '../../Assests/logo.PNG'
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
-import {useNavigate} from 'react-router-dom'
-import Dashboard from './Dashboard';
-// import StudentReg from './StudentReg';
+import { useNavigate} from 'react-router-dom'
+import StudentReg from './StudentReg'
 
-export default function AdminDas() {
-    const Navigate = useNavigate();
-   
-    const handlestdresnavigation = () =>{
-        Navigate("stdregister");
-    }
-    const handlefacnavigation = () =>{
-        Navigate("facultyregister");
-    }
-    const handleLogoutnavigate = () =>{
-        Navigate('/');
-    }
-
+function StudentRegistermain() {
+  const Navigate = useNavigate();
+  const handleNaigateDas = () =>{
+    Navigate('/admindash');
+  }
+  const handleNavigateFac = () =>{
+    Navigate('/admindash/facultyregister');
+  }
+  const handleLogoutnavigate = () =>{
+    Navigate('/');
+  }
   return (
-  
     <>
-      <div className='admin-dash-main'>
+        <div className='admin-dash-main'>
           <div className='row'>
             <div className='col-sm-3 br'>
                <img src={img} style={{marginLeft:"2rem"}}></img>
@@ -43,13 +39,13 @@ export default function AdminDas() {
         <div className='row container '>
              <div className='col-sm-3  cg'>
                   <div>
-                      <button className='dash'>Dashboard</button>
+                      <button className='dash' onClick={handleNaigateDas}>Dashboard</button>
                   </div>
                   <div>
-                      <button className='dash' onClick={handlestdresnavigation} >Student Register</button>
+                      <button className='dash' >Student Register</button>
                   </div>
                   <div>
-                      <button className='dash' onClick={handlefacnavigation} >Faculty Register</button>
+                      <button className='dash' onClick={handleNavigateFac}>Faculty Register</button>
                   </div>
                   <div>
                       <button className='dash'>Admin Register</button>
@@ -65,18 +61,16 @@ export default function AdminDas() {
                   </div>
                   <div>
                       <button className='dash'>Admin Msg</button>
-                  </div>
-
-                  
-                  
+                  </div>  
              </div>
              <div className='col-sm-9'>
-                   <Dashboard/>
+                   <StudentReg/>
              </div>
         </div>
          
       </div>
-      </>  
-    
+    </>
   )
 }
+
+export default StudentRegistermain

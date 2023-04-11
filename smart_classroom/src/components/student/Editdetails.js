@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React , { useState , useEffect} from 'react'
 import './Editdetails.css'
 function Editdetails() {
     const [name, setName] = useState("");
@@ -20,6 +20,7 @@ function Editdetails() {
         errorValidator();
 
       };
+      //form validation
     const errorValidator =() =>{
         if(!name) {
             errors.name = 'Name is required';
@@ -70,9 +71,74 @@ function Editdetails() {
         }
         setErrors(errors);
     }
+
+    //
+    const loadstdData = () =>{ 
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+          };
+          
+          fetch("http://localhost:4000/api/v1/student/"+localStorage.getItem("std_userId"), requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                setName(result.student.name);
+                setEmail(result.student.email);
+                setSession(result.student.session);
+                setAddress(result.student.address);
+                setBranch(result.student.branch);
+                setDateOfBirth(result.student.dob);
+                setDepartment(result.student.department);
+                setFatherName(result.student.fathername);
+                setPhone(result.student.phone);
+                setGender(result.student.gender);
+                // alert(result.student.name);
+            })
+            .catch(error => console.log('error', error));
+    }
+    useEffect(() => {
+      loadstdData();
+    }, [])
+
+    //update student data --api 
+    const updatestdDetails = (e) =>{
+        e.preventDefault();
+       // errorValidator();
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var data = JSON.stringify({
+            "name": name,
+            "email":email,
+            "fathername": fatherName,
+            "gender":gender,
+            "dob": dateOfBirth,
+            "phone":phone,
+            "department":department,
+            "branch":branch,
+            "session":session,
+            "address":address
+        });
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: data,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost:4000/api/v1/student/"+localStorage.getItem("std_userId"), requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            alert(result.success);
+        })
+        .catch(error => console.log('error', error));
+    }
+    
+
   return (
-    <div style={{marginLeft:"25%"}}>
-        <form onSubmit={handleSubmit} >
+    <div style={{}}>
+        <form onSubmit={updatestdDetails} >
             <div style={{width:"50vw",display:"flex",gap:"20px"}} >
                 <div style={{width:"50%"}}>
                     <div className="form-group">
@@ -84,9 +150,9 @@ function Editdetails() {
                         placeholder="Enter  Name"
                         value={name}
                         onChange={(event) => setName(event.target.value)}
-                        onKeyUp={errorValidator}
+                        //onKeyup={errorValidator}
                         />
-                        {errors && <div style={{position:"absolute"}}>{errors.name}</div>}
+                        {errors && <div style={{position:"relative"}}>{errors.name}</div>}
                     </div>
 
                     <div className="form-group">
@@ -98,9 +164,9 @@ function Editdetails() {
                         placeholder="Enter Email"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
-                        onKeyUp={errorValidator}
+                        //onKeyup={errorValidator}
                         />
-                        {errors && <div style={{position:"absolute"}}>{errors.email}</div>}
+                        {errors && <div style={{position:"relative"}}>{errors.email}</div>}
                     </div>
 
                     <div className="form-group">
@@ -138,9 +204,9 @@ function Editdetails() {
                         placeholder="Enter Phone"
                         value={phone}
                         onChange={(event) => setPhone(event.target.value)}
-                        onKeyUp={errorValidator}
+                        //onKeyup={errorValidator}
                         />
-                        {errors && <div style={{position:"absolute"}}>{errors.phone}</div>}
+                        {errors && <div style={{position:"relative"}}>{errors.phone}</div>}
                     </div>
 
                     <div className="form-group">
@@ -183,9 +249,9 @@ function Editdetails() {
                         placeholder="Enter Father's Name"
                         value={fatherName}
                         onChange={(event) => setFatherName(event.target.value)}
-                        onKeyUp={errorValidator}
+                        //onKeyup={errorValidator}
                         />
-                        {errors && <div style={{position:"absolute"}}>{errors.fatherName}</div>}
+                        {errors && <div style={{position:"relative"}}>{errors.fatherName}</div>}
                     </div>
 
                     <div className="form-group">
@@ -198,10 +264,11 @@ function Editdetails() {
                         required
                         >
                         <option value="">Select Department</option>
-                        <option value="cse">CSE</option>
-                        <option value="mechanical">Mechanical</option>
-                        <option value="civil">Civil</option>
-                        <option value="electrical">Electrical</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="MECHNICAL">Mechanical</option>
+                        <option value="CIVIL">Civil</option>
+                        <option value="EE">Electrical</option>
                         </select>
                     </div>
 
@@ -227,9 +294,9 @@ function Editdetails() {
                         placeholder="Enter Password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                        onKeyUp={errorValidator}
+                        //onKeyup={errorValidator}
                         />
-                        {errors && <div style={{position:"absolute"}}>{errors.password}</div>}
+                        {errors && <div style={{position:"relative"}}>{errors.password}</div>}
                     </div>
 
                     <div className="form-group">
@@ -241,9 +308,9 @@ function Editdetails() {
                         placeholder="Confirm Password"
                         value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
-                        onKeyUp={errorValidator}
+                        //onKeyup={errorValidator}
                         />
-                        {errors && <div style={{position:"absolute"}}>{errors.confirmPassword}</div>}
+                        {errors && <div style={{position:"relative"}}>{errors.confirmPassword}</div>}
                     </div>
                 </div>
             </div>

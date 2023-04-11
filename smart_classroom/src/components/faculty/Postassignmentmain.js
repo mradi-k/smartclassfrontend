@@ -1,37 +1,24 @@
-import React ,{useState , useEffect} from 'react'
+import React ,{} from 'react'
 import img from '../../Assests/logo.PNG'
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import {useNavigate} from "react-router-dom"
+import Postassignment from './Postassignment';
 
-export default function Studentdashboard() {
+export default function Postassignmentmain() {
 
     const Navigate = useNavigate();
-    // const [userId, setUserId] = useState();
-     const [userName, setUserName] = useState();
-
-    useEffect(()=>{
-        // setUserId(localStorage.getItem("std_userId"));
-        setUserName(localStorage.getItem("std_userName"));
-        // if(!userId) {
-        //     console.log("Token Not Avilable");
-        //     console.log(userId);
-        // }
-    })
 
     const editProfileHandler = () =>{
-        Navigate('editprofile');
+        // navigate('editprofile');
     }
     const dashBord =() =>{
-        Navigate('/stddash')
+        Navigate('/facdash')
     }
     const handleLogoutnavigate = () =>{
         Navigate('/');
     }
-    // const handleStudentbot = () =>{
-    //     Navigate('/http://127.0.0.1:5173/');
-    // }
 
   return (
   
@@ -39,7 +26,7 @@ export default function Studentdashboard() {
       <div className='container-fluid'>
           <div className='row'>
             <div className='col-sm-3 br'>
-               <img src={img} style={{marginLeft:"2rem"}} alt ="not found"></img>
+               <img src={img} alt="not found" style={{marginLeft:"2rem"}} />
             </div>
             <div className='col-sm-6 br2 '>
              <p style={{fontSize:"1.5rem",fontWeight:"700",color:"#3f51b5"}} ><DashboardIcon sx={{ fontSize: 50 }} color="primary"/> &nbsp;Dashboard</p>
@@ -47,14 +34,14 @@ export default function Studentdashboard() {
             </div>
             <div ></div>
             <div className='col-sm-3 br3'>
-            <button className='btn btn-danger center' onClick={handleLogoutnavigate}><LogoutIcon fontSize="small"/>&emsp;Log out</button>
+            <button className='btn btn-danger center ' onClick={handleLogoutnavigate}><LogoutIcon fontSize="small"/>&emsp;Log out</button>
             </div>
           </div>
       </div>
       <hr/>
       <div className='cg2 '>
         <div className='row m-0 p-0 '>
-             <div className='col-sm-2  cg'>
+             <div className='col-sm-2 cg'>
                   <div>
                       <button className='dash' onClick={dashBord}>Dashboard</button>
                   </div>
@@ -77,13 +64,34 @@ export default function Studentdashboard() {
                       <button className='dash'>Msg  to faculty</button>
                   </div>
                   <div>
-                      <a className='dash btn' href='http://127.0.0.1:5173/'>Student ChatBot</a>
+                      <button className='dash'> Msg to Admin</button>
                   </div>
-             </div>
 
+                  
+                  
+             </div>
              <div className='col-sm-10'>
-                    {/* {userId} */}
-                    <h4>Hi !{userName} SmartClassroom Welcomes's you in the Class</h4>
+                    <div className='row'>
+                        <div  className='col-sm-2'></div>
+                        <div className='col-sm-8 d-flex justify-content-center'>
+                            <h1 
+                                className='mt-4 bg-primary  text-white  border border-danger rounded-lg'
+                                style={{
+                                    textAlign:"center",
+                                    width:"50vw"
+                                }}>
+                                Post Assignment
+                            </h1>
+                        </div>
+                        <div className='col-sm-2'></div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-sm-4'></div>
+                        <div className='col-sm-4 d-flex justify-content-center'>
+                            <Postassignment/>
+                        </div>
+                        <div className='col-sm-4'></div>
+                    </div>
              </div>
         </div>
          

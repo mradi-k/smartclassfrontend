@@ -46,13 +46,45 @@ function Login() {
             else{
               const _id = result.data._id;
               const _name = result.data.name;
-              localStorage.setItem("userId",_id);
-              localStorage.setItem("userName",_name)
+              localStorage.setItem("std_userId",_id);
+              localStorage.setItem("std_userName",_name)
               Navigate("/stddash");
             }
           })
           .catch(error => console.log('error', error));
-      }else  if(selectedRole === "Admin"){
+      }else  if(selectedRole === "Faculty"){
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var data = JSON.stringify({
+          "email": email,
+          "password": password
+        });
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: data,
+          redirect: 'follow'
+        };
+
+        fetch("http://localhost:4000/api/v1/faculty/login", requestOptions)
+          .then(response => response.json())
+          .then(result => {
+            if(result.success === false){
+              alert(result.message)
+            }
+            else{
+              const _id = result.data._id;
+              const _name = result.data.name;
+              localStorage.setItem("fac_userId",_id);
+              localStorage.setItem("fac_userName",_name)
+              Navigate("/facdash");
+            }
+          })
+          .catch(error => console.log('error', error));
+        // Navigate("/admindash")
+      }else if(selectedRole === "Admin"){
         Navigate("/admindash")
       }
     }

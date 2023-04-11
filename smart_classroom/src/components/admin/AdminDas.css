@@ -1,4 +1,6 @@
-
+.admin-dash-main{
+    overflow-x: hidden;
+}
 .ad{
     background-color:white;
 }
@@ -37,17 +39,18 @@ hr{
 }
 
 .cg2{
-    background-color: rgb(249, 206, 236);
+    /* background-color: rgb(249, 206, 236); */
+    background-color: rgb(240, 234, 234);
 }
 .cg{
-    border-right: 1px solid rgb(205, 114, 39);
+    /* border-right: 1px solid rgb(205, 114, 39); */
     min-height: 100vh;
 }
 .cg div{
     padding:10px 0px;
 }
 .dash{
-    background-color: rgb(205, 114, 39); 
+    background-color: crimson; 
     width: 100%;
     padding: 10px;
     border: none;
@@ -59,7 +62,9 @@ hr{
 }
 .dash:hover
 {
-    background-color: rgb(185, 156, 14);
+    /* background-color:blue; */
+    background-color: aliceblue;color: rgb(20, 20, 220) !important; font-weight: bold; 
+    box-shadow: 2px 2px 2px 2px rgba(220, 20, 60, 0.478);
     
 }
 .frm{

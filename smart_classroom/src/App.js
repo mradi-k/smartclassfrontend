@@ -4,8 +4,13 @@ import Landingpage from './components/templetes/Landingpage';
 import Login from './components/templetes/Login';
 import AdminDas from './components/admin/AdminDas';
 import Studentdashboard from './components/student/Studentdashboard';
-import Editdetails from './components/student/Editdetails';
 import Editprofile from './components/student/Editprofile';
+import StudentRegistermain from './components/admin/StudentRegistermain';
+import Facultydashboard from './components/faculty/Facultydashboar';
+import Editprofilef from './components/faculty/Editprofile';
+import FacultyRegMain from './components/admin/FacultyRegMain';
+import Postassignmentmain from './components/faculty/Postassignmentmain';
+
 
 function App() {
   return (
@@ -15,7 +20,12 @@ function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/admindash' element={<AdminDas/>}/>
           <Route path='/stddash' element={<Studentdashboard/>}/>
+          <Route path='/facdash' element={<Facultydashboard/>}/>
           <Route path='/stddash/editprofile' element={<Editprofile/>}/>
+          <Route path='/facdash/editprofile' element={<Editprofilef/>}/>
+          <Route path='/admindash/stdregister' element={<StudentRegistermain/>}/>
+          <Route path='/admindash/facultyregister' element={<FacultyRegMain/>}/>
+          <Route path='/facdash/postassignment' element={<Postassignmentmain/>} />
           {/* <Route path='editprofile' element={<Editprofile/>}/> */}
         </Routes>
     </BrowserRouter>

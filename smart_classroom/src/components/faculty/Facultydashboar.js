@@ -1,32 +1,37 @@
-import React ,{useState} from 'react'
-import './AdminDas.css'
+import React ,{useState , useEffect} from 'react'
 import img from '../../Assests/logo.PNG'
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
-import {useNavigate} from 'react-router-dom'
-import Dashboard from './Dashboard';
-// import StudentReg from './StudentReg';
 
-export default function AdminDas() {
+import {useNavigate} from "react-router-dom"
+
+export default function Facultydashboard() {
+
     const Navigate = useNavigate();
-   
-    const handlestdresnavigation = () =>{
-        Navigate("stdregister");
-    }
-    const handlefacnavigation = () =>{
-        Navigate("facultyregister");
+    const [userId, setUserId] = useState();
+    const [userName, setUserName] = useState();
+
+    useEffect(()=>{
+        setUserId(localStorage.getItem("fac_userId"));
+        setUserName(localStorage.getItem("fac_userName"));
+    },[userId])
+
+    const editProfileHandler = () =>{
+        Navigate('editprofile');
     }
     const handleLogoutnavigate = () =>{
         Navigate('/');
     }
-
+    const postAssignmentHandler = () =>{
+        Navigate('postassignment');
+    }
   return (
   
     <>
-      <div className='admin-dash-main'>
+      <div className='container-fluid'>
           <div className='row'>
             <div className='col-sm-3 br'>
-               <img src={img} style={{marginLeft:"2rem"}}></img>
+               <img alt="Not found" src={img} style={{marginLeft:"2rem"}}></img>
             </div>
             <div className='col-sm-6 br2 '>
              <p style={{fontSize:"1.5rem",fontWeight:"700",color:"#3f51b5"}} ><DashboardIcon sx={{ fontSize: 50 }} color="primary"/> &nbsp;Dashboard</p>
@@ -40,38 +45,37 @@ export default function AdminDas() {
       </div>
       <hr/>
       <div className='cg2 '>
-        <div className='row container '>
-             <div className='col-sm-3  cg'>
+        <div className='row  m-0 p-0 '>
+             <div className='col-sm-2  cg'>
                   <div>
                       <button className='dash'>Dashboard</button>
                   </div>
                   <div>
-                      <button className='dash' onClick={handlestdresnavigation} >Student Register</button>
+                      <button className='dash'onClick={editProfileHandler}  >Edit Profile</button>
                   </div>
                   <div>
-                      <button className='dash' onClick={handlefacnavigation} >Faculty Register</button>
-                  </div>
-                  <div>
-                      <button className='dash'>Admin Register</button>
+                      <button className='dash'>Lectures</button>
                   </div>
                   <div>
                       <button className='dash'>Time Table</button>
                   </div>
                   <div>
+                      <button className='dash' onClick={postAssignmentHandler} >Post Asignments</button>
+                  </div>
+                  <div>
                       <button className='dash'>Progress Report</button>
                   </div>
                   <div>
-                      <button className='dash'>Faculty Msg</button>
+                      <button className='dash'>Msg  to Admiin</button>
                   </div>
                   <div>
-                      <button className='dash'>Admin Msg</button>
+                      <button className='dash'> Msg to Students</button>
                   </div>
 
-                  
-                  
              </div>
-             <div className='col-sm-9'>
-                   <Dashboard/>
+             <div className='col-sm-10 '>
+                    {/* {userId} */}
+                    <h1 >Hi !{userName} Smart ClassRoom Welcomes you to As a Faculty</h1>
              </div>
         </div>
          

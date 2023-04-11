@@ -8,19 +8,22 @@ import Editdetails from './Editdetails';
 
 function Editprofile() {
 
-    const navigate = useNavigate();
+    const Navigate = useNavigate();
 
     const editProfileHandler = () =>{
-        navigate('editprofile');
+        // navigate('editprofile');
     }
     const dashBord =() =>{
-        navigate('/stddash')
+        Navigate('/stddash')
+    }
+    const handleLogoutnavigate = () =>{
+        Navigate('/');
     }
 
   return (
   
     <>
-      <div className=''>
+      <div className='container-fluid'>
           <div className='row'>
             <div className='col-sm-3 br'>
                <img src={img} style={{marginLeft:"2rem"}}></img>
@@ -31,14 +34,14 @@ function Editprofile() {
             </div>
             <div ></div>
             <div className='col-sm-3 br3'>
-            <button className='btn btn-danger center '><LogoutIcon fontSize="small"/>&emsp;Log out</button>
+            <button className='btn btn-danger center ' onClick={handleLogoutnavigate}><LogoutIcon fontSize="small"/>&emsp;Log out</button>
             </div>
           </div>
       </div>
       <hr/>
       <div className='cg2 '>
-        <div className='row container '>
-             <div className='col-sm-3  cg'>
+        <div className='row p-0 m-0 '>
+             <div className='col-sm-2  cg'>
                 <div>
                     <button className='dash' onClick={dashBord}>Dashboard</button>
                 </div>
@@ -64,8 +67,28 @@ function Editprofile() {
                     <button className='dash'> Msg to Admin</button>
                 </div>
              </div>
-             <div className='col-sm-9'>
-                   <Editdetails />
+             <div className='col-sm-10'>
+             <div className='row'>
+                        <div  className='col-sm-2'></div>
+                        <div className='col-sm-8 d-flex justify-content-center'>
+                            <h1 
+                                className='mt-4 bg-primary  text-white  border border-danger rounded-lg'
+                                style={{
+                                    textAlign:"center",
+                                    width:"50vw"
+                                }}>
+                                Edit Your Details
+                            </h1>
+                        </div>
+                        <div className='col-sm-2'></div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-sm-2'></div>
+                        <div className='col-sm-8 d-flex justify-content-center'>
+                            <Editdetails/>
+                        </div>
+                        <div className='col-sm-2'></div>
+                    </div>
              </div>
         </div>
          
