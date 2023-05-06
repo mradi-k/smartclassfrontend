@@ -10,100 +10,99 @@ const roles = ["Student", "Faculty", "Admin"];
 function Login() {
   const [modal, setModal] = useState(false);
   const [selectedRole, setSelectedRole] = useState(roles[0]);
-  const [email,setEmail]= useState();
-  const [password,setPassword]= useState();
-  
-  const Navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
+  const Navigate = useNavigate();
+  
   const handleRoleChange = (event) => {
     setSelectedRole(event.target.value);
   };
   //student login
-  const studentLogin = (e) =>{
+  const studentLogin = (e) => {
     e.preventDefault();
-    if(selectedRole === "Student"){
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+    if (selectedRole === "Student") {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append(
+        "Cookie",
+        "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDM4MzMxZmMxZThhODI3ODFiYzAyOTgiLCJpYXQiOjE2ODE0MDQ3Nzh9.qNCzzWn0tWLEARgMj3GvL2oaA5TX6eYLmpVJOV2rZ80"
+      );
 
-        var data = JSON.stringify({
-          "email": email,
-          "password": password
-        });
+      var data = JSON.stringify({
+        email: email,
+        password: password,
+      });
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: data,
-          redirect: 'follow'
-        };
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: data,
+        redirect: "follow",
+      };
 
-        fetch("http://localhost:4000/api/v1/student/login", requestOptions)
-          .then(response => response.json())
-          .then(result => {
-            if(result.success === false){
-              alert(result.message)
-            }
-            else{
-              const _id = result.data._id;
-              const _name = result.data.name;
-              localStorage.setItem("std_userId",_id);
-              localStorage.setItem("std_userName",_name)
-              Navigate("/stddash");
-            }
-          })
-          .catch(error => console.log('error', error));
-      }else  if(selectedRole === "Faculty"){
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+      fetch("http://localhost:4000/api/v1/student/login", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.success === false) {
+            alert(result.message);
+          } else {
+            const _id = result.student._id;
+            const _name = result.student.name;
+            const _department = result.student.department;
+            localStorage.setItem("std_userId", _id);
+            localStorage.setItem("std_userName", _name);
+            localStorage.setItem("std_department", _department);
+            Navigate("/stddash");
+          }
+        })
+        .catch((error) => console.log("error", error));
+    } else if (selectedRole === "Faculty") {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
-        var data = JSON.stringify({
-          "email": email,
-          "password": password
-        });
+      var data = JSON.stringify({
+        email: email,
+        password: password,
+      });
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: data,
-          redirect: 'follow'
-        };
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: data,
+        redirect: "follow",
+      };
 
-        fetch("http://localhost:4000/api/v1/faculty/login", requestOptions)
-          .then(response => response.json())
-          .then(result => {
-            if(result.success === false){
-              alert(result.message)
-            }
-            else{
-              const _id = result.data._id;
-              const _name = result.data.name;
-              localStorage.setItem("fac_userId",_id);
-              localStorage.setItem("fac_userName",_name)
-              Navigate("/facdash");
-            }
-          })
-          .catch(error => console.log('error', error));
-        // Navigate("/admindash")
-      }else if(selectedRole === "Admin"){
-        Navigate("/admindash")
-      }
-    }
-
-  //navigation function
-  const handleNavigation = () => {
-    if(selectedRole== "Admin")
-    {
+      fetch("http://localhost:4000/api/v1/faculty/login", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.success === false) {
+            alert(result.message);
+          } else {
+            const _id = result.data._id;
+            const _name = result.data.name;
+            localStorage.setItem("fac_userId", _id);
+            localStorage.setItem("fac_userName", _name);
+            Navigate("/facdash");
+          }
+        })
+        .catch((error) => console.log("error", error));
+      // Navigate("/admindash")
+    } else if (selectedRole === "Admin") {
       Navigate("/admindash");
-    }
-    else if(selectedRole== "Student"){
-      Navigate("/stddash");
-    }
-    else if(selectedRole == "Faculty"){
-      Navigate("");
     }
   };
 
-
+  //navigation function
+  const handleNavigation = () => {
+    if (selectedRole == "Admin") {
+      Navigate("/admindash");
+    } else if (selectedRole == "Student") {
+      Navigate("/stddash");
+    } else if (selectedRole == "Faculty") {
+      Navigate("");
+    }
+  };
 
   return (
     <>
@@ -141,7 +140,7 @@ function Login() {
         </ModalBody>
       </Modal>
       {/* forgot password model code end here  */}
-      
+
       <div className="login-container">
         <div className="row">
           <div className="col-sm-6 left-side">
@@ -149,8 +148,7 @@ function Login() {
             <img
               src={img}
               className="left-container"
-              alt="image is loading...."
-            ></img>
+              alt="image is loading...."></img>
           </div>
           <div className="col-sm-6">
             <div className="right-side mt-5">
@@ -159,8 +157,7 @@ function Login() {
                   fontSize: "50px",
                   color: " #007bff",
                   alignItems: "center",
-                }}
-              >
+                }}>
                 {" "}
                 <AccessibleIcon color="primary" sx={{ fontSize: 50 }} /> Login
               </span>
@@ -172,8 +169,7 @@ function Login() {
                   id="role-select"
                   value={selectedRole}
                   onChange={handleRoleChange}
-                  className="role-option"
-                >
+                  className="role-option">
                   {roles.map((role) => (
                     <option key={role} value={role} className="choose-role">
                       {role}
@@ -183,23 +179,23 @@ function Login() {
 
                 <div className="form-group">
                   <label htmlFor="username">Email:</label>
-                  <input 
-                    type="email" 
-                    id="username" 
+                  <input
+                    type="email"
+                    id="username"
                     value={email}
-                    onChange={(e)=>setEmail(e.target.value)}  
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password:</label>
-                  <input 
-                    type="password" 
-                    id="password" 
+                  <input
+                    type="password"
+                    id="password"
                     value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <button type="submit" onClick={(e)=>studentLogin(e)}>
+                <button type="submit" onClick={(e) => studentLogin(e)}>
                   Login
                 </button>
                 <a href="#" onClick={() => setModal(true)}>
