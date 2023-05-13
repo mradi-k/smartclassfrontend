@@ -11,6 +11,8 @@ import Editprofilef from "./components/faculty/Editprofile";
 import FacultyRegMain from "./components/admin/FacultyRegMain";
 import Postassignmentmain from "./components/faculty/Postassignmentmain";
 import Assignments from "./components/student/Assignments";
+import Timetable from "./components/admin/Timetable";
+import TimeTable from "./components/student/TimeTable";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           path="/facdash/postassignment"
           element={<Postassignmentmain />}
         />
+        <Route path="/stddash/timetable" element={<TimeTable />} />
+        <Route path="/admindash/timetable" element={<Timetable />} />
         <Route path="/stddash/assignments" element={<Assignments />} />
         {/* <Route path='editprofile' element={<Editprofile/>}/> */}
       </Routes>

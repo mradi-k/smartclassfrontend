@@ -34,6 +34,9 @@ export default function Studentdashboard() {
   // const handleStudentbot = () =>{
   //     Navigate('/http://127.0.0.1:5173/');
   // }
+  const handleTimeTable = () => {
+    Navigate("/stddash/timetable");
+  };
 
   return (
     <>
@@ -82,7 +85,9 @@ export default function Studentdashboard() {
               <button className="dash">Live Lectures</button>
             </div>
             <div>
-              <button className="dash">Time Table</button>
+              <button className="dash" onClick={handleTimeTable}>
+                Time Table
+              </button>
             </div>
             <div>
               <button className="dash" onClick={showAssignment}>

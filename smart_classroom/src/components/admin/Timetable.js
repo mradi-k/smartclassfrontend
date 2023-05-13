@@ -1,28 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AdminDas.css";
 import img from "../../Assests/logo.PNG";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
-import Dashboard from "./Dashboard";
-// import StudentReg from './StudentReg';
+// import StudentReg from './StudentReg'import
+import Time from "../templetes/Timetable";
 
-export default function AdminDas() {
+function Timetable() {
   const Navigate = useNavigate();
-
-  const handlestdresnavigation = () => {
-    Navigate("stdregister");
+  const handleNaigateDas = () => {
+    Navigate("/admindash");
   };
-  const handlefacnavigation = () => {
-    Navigate("facultyregister");
+  const handleNavigateFac = () => {
+    Navigate("/admindash/facultyregister");
+  };
+  const handleStdReg = () => {
+    Navigate("/admindash/stdregister");
   };
   const handleLogoutnavigate = () => {
     Navigate("/");
   };
-  const handleTime = () => {
-    Navigate("/admindash/timetable");
-  };
-
   return (
     <>
       <div className="admin-dash-main">
@@ -57,15 +55,17 @@ export default function AdminDas() {
         <div className="row container ">
           <div className="col-sm-3  cg">
             <div>
-              <button className="dash">Dashboard</button>
+              <button className="dash" onClick={handleNaigateDas}>
+                Dashboard
+              </button>
             </div>
             <div>
-              <button className="dash" onClick={handlestdresnavigation}>
+              <button className="dash" onClick={handleStdReg}>
                 Student Register
               </button>
             </div>
             <div>
-              <button className="dash" onClick={handlefacnavigation}>
+              <button className="dash" onClick={handleNavigateFac}>
                 Faculty Register
               </button>
             </div>
@@ -73,9 +73,7 @@ export default function AdminDas() {
               <button className="dash">Admin Register</button>
             </div>
             <div>
-              <button className="dash" onClick={handleTime}>
-                Time Table
-              </button>
+              <button className="dash">Time Table</button>
             </div>
             <div>
               <button className="dash">Progress Report</button>
@@ -88,10 +86,12 @@ export default function AdminDas() {
             </div>
           </div>
           <div className="col-sm-9">
-            <Dashboard />
+            <Time />
           </div>
         </div>
       </div>
     </>
   );
 }
+
+export default Timetable;

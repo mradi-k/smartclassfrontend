@@ -4,9 +4,10 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 import { useNavigate } from "react-router-dom";
-import Editdetails from "./Editdetails";
+// import Editdetails from "./Editdetails";
+import Timetable from "../templetes/Timetable";
 
-function Editprofile() {
+function TimeTable() {
   const Navigate = useNavigate();
 
   const editProfileHandler = () => {
@@ -19,7 +20,7 @@ function Editprofile() {
     Navigate("/");
   };
   const timeTable = () => {
-    Navigate("/stddash");
+    Navigate("");
   };
   const assignmnet = () => {
     Navigate("/stddash/assignments");
@@ -101,7 +102,7 @@ function Editprofile() {
                     textAlign: "center",
                     width: "50vw",
                   }}>
-                  Edit Your Details
+                  Time Table 
                 </h1>
               </div>
               <div className="col-sm-2"></div>
@@ -109,7 +110,7 @@ function Editprofile() {
             <div className="row">
               <div className="col-sm-2"></div>
               <div className="col-sm-8 d-flex justify-content-center">
-                <Editdetails />
+                <Timetable />
               </div>
               <div className="col-sm-2"></div>
             </div>
@@ -120,4 +121,4 @@ function Editprofile() {
   );
 }
 
-export default Editprofile;
+export default TimeTable;
