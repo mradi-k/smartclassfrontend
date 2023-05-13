@@ -48,7 +48,8 @@ export default function Studentdashboard() {
                 fontSize: "1.5rem",
                 fontWeight: "700",
                 color: "#3f51b5",
-              }}>
+              }}
+            >
               <DashboardIcon sx={{ fontSize: 50 }} color="primary" />{" "}
               &nbsp;Dashboard
             </p>
@@ -57,7 +58,8 @@ export default function Studentdashboard() {
           <div className="col-sm-3 br3">
             <button
               className="btn btn-danger center"
-              onClick={handleLogoutnavigate}>
+              onClick={handleLogoutnavigate}
+            >
               <LogoutIcon fontSize="small" />
               &emsp;Log out
             </button>
@@ -96,7 +98,11 @@ export default function Studentdashboard() {
               <button className="dash">Msg to faculty</button>
             </div>
             <div>
-              <a className="dash btn" href="http://127.0.0.1:5173/">
+              <a
+                className="dash btn"
+                href="http://127.0.0.1:5500/studentBot/StudentBot.html"
+                target="_blank"
+              >
                 Student ChatBot
               </a>
             </div>

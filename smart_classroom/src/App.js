@@ -23,6 +23,7 @@ function App() {
         <Route path="/facdash" element={<Facultydashboard />} />
         <Route path="/stddash/editprofile" element={<Editprofile />} />
         <Route path="/facdash/editprofile" element={<Editprofilef />} />
+
         <Route
           path="/admindash/stdregister"
           element={<StudentRegistermain />}
