@@ -25,6 +25,9 @@ export default function Facultydashboard() {
     const postAssignmentHandler = () =>{
         Navigate('postassignment');
     }
+    const lectures =() =>{
+        Navigate('/facdash/upcominglecture')
+    }
   return (
   
     <>
@@ -54,7 +57,7 @@ export default function Facultydashboard() {
                       <button className='dash'onClick={editProfileHandler}  >Edit Profile</button>
                   </div>
                   <div>
-                      <button className='dash'>Lectures</button>
+                      <button className='dash' onClick={lectures}>Lectures</button>
                   </div>
                   <div>
                       <button className='dash'>Time Table</button>

@@ -13,6 +13,9 @@ import Postassignmentmain from "./components/faculty/Postassignmentmain";
 import Assignments from "./components/student/Assignments";
 import Timetable from "./components/admin/Timetable";
 import TimeTable from "./components/student/TimeTable";
+import CreateClass from "./components/admin/CreateClass";
+import LiveLectureMain from "./components/student/LiveLectureMain";
+import Bot from "./components/student/StudentBot";
 
 function App() {
   return (
@@ -20,24 +23,32 @@ function App() {
       <Routes>
         <Route index element={<Landingpage />} />
         <Route path="/login" element={<Login />} />
+        {/* //Admin Dash */}
         <Route path="/admindash" element={<AdminDas />} />
-        <Route path="/stddash" element={<Studentdashboard />} />
-        <Route path="/facdash" element={<Facultydashboard />} />
-        <Route path="/stddash/editprofile" element={<Editprofile />} />
-        <Route path="/facdash/editprofile" element={<Editprofilef />} />
+        <Route path="/admindash/createclass" element={<CreateClass />} />
         <Route
           path="/admindash/stdregister"
           element={<StudentRegistermain />}
         />
         <Route path="/admindash/facultyregister" element={<FacultyRegMain />} />
+        <Route path="/admindash/timetable" element={<Timetable />} />
+        {/* //Student Dash */}
+        <Route path="/stddash" element={<Studentdashboard />} />
+        <Route path="/stddash/timetable" element={<TimeTable />} />
+        <Route path="/stddash/assignments" element={<Assignments />} />
+        <Route path="/stddash/editprofile" element={<Editprofile />} />
+        <Route path="/stddash/upcominglecture" element={<LiveLectureMain />} />
+        <Route path="/stddash/chatbot" element={<Bot />} />
+
+        {/* faculty Dash */}
+        <Route path="/facdash/editprofile" element={<Editprofilef />} />
         <Route
           path="/facdash/postassignment"
           element={<Postassignmentmain />}
         />
-        <Route path="/stddash/timetable" element={<TimeTable />} />
-        <Route path="/admindash/timetable" element={<Timetable />} />
-        <Route path="/stddash/assignments" element={<Assignments />} />
-        {/* <Route path='editprofile' element={<Editprofile/>}/> */}
+        <Route path="/facdash/upcominglecture" element={<LiveLectureMain />} />
+
+        <Route path="/facdash" element={<Facultydashboard />} />
       </Routes>
     </BrowserRouter>
   );

@@ -24,6 +24,9 @@ function Editprofile() {
   const assignmnet = () => {
     Navigate("/stddash/assignments");
   };
+  const liveLect = () => {
+    Navigate("/stddash/upcominglecture");
+  };
 
   return (
     <>
@@ -69,7 +72,9 @@ function Editprofile() {
               </button>
             </div>
             <div>
-              <button className="dash">Live Lectures</button>
+              <button className="dash" onClick={liveLect}>
+                Live Lectures
+              </button>
             </div>
             <div>
               <button className="dash" onClick={timeTable}>

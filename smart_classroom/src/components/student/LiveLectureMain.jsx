@@ -1,43 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect } from 'react'
+
 import img from "../../Assests/logo.PNG";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from 'react-router-dom';
+import LiveLecture from './LiveLecture';
 
-import { useNavigate } from "react-router-dom";
-
-export default function Studentdashboard() {
-  const Navigate = useNavigate();
-  const [userName, setUserName] = useState();
-
-  useEffect(() => {
-    setUserName(localStorage.getItem("std_userName"));
-  });
-
-  const editProfileHandler = () => {
-    Navigate("editprofile");
-  };
-  const dashBord = () => {
-    Navigate("/stddash");
-  };
-  const showAssignment = () => {
-    Navigate("/stddash/assignments");
-  };
-  const handleLogoutnavigate = () => {
-    Navigate("/");
-  };
-  const handleStudentbot = () => {
-    Navigate("/stddash/chatbot");
-  };
-  const handleTimeTable = () => {
-    Navigate("/stddash/timetable");
-  };
-  const handleLiveLecture = () => {
-    Navigate("/stddash/upcominglecture");
-  };
-
+const LiveLectureMain = () => {
+    const Navigate =useNavigate();
+    const editProfileHandler = () => {
+        Navigate("/stddash/editprofile");
+      };
+      const dashBord = () => {
+        // alert("hello");
+        Navigate("/stddash");
+      };
+      const showAssignment = () => {
+        Navigate("/stddash/assignments");
+      };
+      const handleLogoutnavigate = () => {
+        Navigate("/");
+      };
+      const timeTable = () => {
+        Navigate("/stddash/timetable");
+      };
   return (
-    <>
-      <div className="container-fluid">
+   <>
+    <div className="container-fluid">
         <div className="row">
           <div className="col-sm-3 br">
             <img src={img} style={{ marginLeft: "2rem" }} alt="not found"></img>
@@ -79,14 +68,10 @@ export default function Studentdashboard() {
               </button>
             </div>
             <div>
-              <button className="dash" onClick={handleLiveLecture}>
-                Live Lectures
-              </button>
+              <button className="dash">Live Lectures</button>
             </div>
             <div>
-              <button className="dash" onClick={handleTimeTable}>
-                Time Table
-              </button>
+              <button className="dash"  onClick={timeTable}>Time Table</button>
             </div>
             <div>
               <button className="dash" onClick={showAssignment}>
@@ -100,20 +85,19 @@ export default function Studentdashboard() {
               <button className="dash">Msg to faculty</button>
             </div>
             <div>
-              <button className="dash btn" onClick={handleStudentbot}>
+              <a className="dash btn" href="http://127.0.0.1:5173/">
                 Student ChatBot
-              </button>
+              </a>
             </div>
           </div>
 
           <div className="col-sm-10">
-            {/* {userId} */}
-            <h4 style={{ marginLeft: "10rem" }}>
-              Hi !{userName} SmartClassroom Welcomes's you in the Class
-            </h4>
+            <LiveLecture/>
           </div>
         </div>
       </div>
-    </>
-  );
+   </> 
+  )
 }
+
+export default LiveLectureMain

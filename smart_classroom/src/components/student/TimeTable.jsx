@@ -25,7 +25,9 @@ function TimeTable() {
   const assignmnet = () => {
     Navigate("/stddash/assignments");
   };
-
+  const liveLect = () => {
+    Navigate("/stddash/upcominglecture");
+  };
   return (
     <>
       <div className="container-fluid">
@@ -70,7 +72,7 @@ function TimeTable() {
               </button>
             </div>
             <div>
-              <button className="dash">Live Lectures</button>
+              <button className="dash" onClick={liveLect} >Live Lectures</button>
             </div>
             <div>
               <button className="dash" onClick={timeTable}>

@@ -29,7 +29,19 @@ function Navbar() {
                 <a className="nav-link " href="#contact">Contact</a>
               </li>
             </ul>
-            <button onClick={handleLogb} className='btn btn-warning m-2'>Login</button>
+            <button onClick={handleLogb} className="btn btn-dark m-2">
+            Login
+          </button>
+          <button className="btn btn-light m-2">
+            <a
+              href="http://127.0.0.1:5500/LMS/"
+              style={{ textDecoration: "none" }}
+              target="_blank"
+            >
+              {" "}
+              Quick Access
+            </a>
+          </button>
           </div>
         </nav>
     </>

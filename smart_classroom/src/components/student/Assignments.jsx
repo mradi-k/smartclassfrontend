@@ -40,6 +40,9 @@ const Assignments = () => {
       const showAssignment = () => {
         Navigate("");
       };
+      const timeTable = () =>{
+        Navigate('/stddash/timetable');
+      }
       const handleLogoutnavigate = () => {
         Navigate("/");
       };
@@ -90,7 +93,7 @@ const Assignments = () => {
               <button className="dash">Live Lectures</button>
             </div>
             <div>
-              <button className="dash">Time Table</button>
+              <button className="dash" onClick={timeTable} >Time Table</button>
             </div>
             <div>
               <button className="dash" onClick={showAssignment}>

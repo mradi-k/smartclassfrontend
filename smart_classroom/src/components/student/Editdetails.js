@@ -169,6 +169,7 @@ function Editdetails() {
                 id="email"
                 placeholder="Enter Email"
                 value={email}
+                disabled
                 onChange={(event) => setEmail(event.target.value)}
                 //onKeyup={errorValidator}
               />
